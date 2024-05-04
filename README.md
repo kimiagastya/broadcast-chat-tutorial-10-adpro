@@ -7,3 +7,7 @@ Untuk menjalankan program sesuai dengan ketentuan soal (1 server dan 3 client), 
 ![Modifying the Websocket Port](img/Modif_port.png)
 <br>
 Perlu dilakukan modifikasi pada kedua file client.rs dan server.rs untuk mengganti port menjadi 8080. Pada file client.rs, port diganti pada Uri di `ClientBuilder`, yang merupakan builder untuk koneksi WebSocket pada client. Pada file server.rs, port diganti pada variabel `listener` yang bertujuan sebagai TCP listener pada koneksi serta pada perintah print yang menunjukkan kalau server listening pada port 8080. Program tetap berjalan layaknya sebelum port diganti.
+## Small changes, add IP and Port<br>
+![Small changes, add IP and Port](img/Add_IP_Port.png)
+<br>
+Untuk bisa menambahkan informasi berupa IP dan port dari sender pada setiap client, saya mengubah format teks broadcast pada file server.rs dengan menambahkan address `addr` dari client sender, dari yang sebelumnya `bcast_tx.send(text.into())?;` menjadi `bcast_tx.send(format!("{addr} : {text}"))?;`
